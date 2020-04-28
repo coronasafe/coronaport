@@ -23,6 +23,7 @@ class ContactsController < ApplicationController
   end
 
   def create
+    @contact = @application.contacts.create(contact_params)
     @contact.user = current_user
     existing_contact = Contact.find_by(phone: contact_params["phone"].squish)
     if existing_contact

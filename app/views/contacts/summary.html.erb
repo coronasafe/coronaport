@@ -1,10 +1,13 @@
 <div class="max-w-3xl mx-auto">
-  <div class="bg-white shadow overflow-hidden  rounded-lg mt-4 p-2">
+  <div class="bg-white shadow overflow-hidden  rounded-lg mt-4 px-2 py-4">
     <div class="text-xl font-black text-center">
       <%= @contact.name %>
     </div>
     <div class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2 text-center">
       <%= @contact.gender.to_s.capitalize() %>, <%= @contact.age %> years old
+    </div>
+    <div class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2 text-center">
+      Travellers: <%= @application.contacts.count %>
     </div>
   </div>
 
@@ -96,7 +99,7 @@
   <div class="mt-4 font-semibold text-xl">
     Personal Details
   </div>
-  <div class="bg-white shadow overflow-hidden  sm:rounded-lg mt-4">
+  <div class="bg-white shadow overflow-hidden rounded-lg mt-4">
     <div class="flex flex-col-reverse md:flex-row">
       <div class="px-4">
         <div>
