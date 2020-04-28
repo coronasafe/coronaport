@@ -93,10 +93,10 @@
                         </div>
                         <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
 
-                            <i class="fas fa-check-circle text-green-500 mr-1"></i>
-                            Completed
+                          <i class="fas fa-check-circle text-green-500 mr-1"></i>
+                          Completed
 
-<!--                            <i class="fas fa-times-circle text-red-500 mr-1"></i>-->
+                          <!--                            <i class="fas fa-times-circle text-red-500 mr-1"></i>-->
                           <!--                            Please Fill up the health details-->
 
                         </div>
@@ -153,66 +153,7 @@
 
         <% @application.houses.each do |house| %>
           <li class="border-t border-gray-200">
-            <%= link_to application_house_path(@application, house), class: "block hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-150 ease-in-out" do %>
-              <div class="flex items-center px-4 py-4 sm:px-6">
-                <div class="min-w-0 flex-1 flex items-center">
-                  <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-                    <div class="sm:col-span-1">
-                      <dt class="text-sm leading-5 font-medium text-gray-500">
-                        House Name
-                      </dt>
-                      <dd class="mt-1 text-sm leading-5 text-gray-900">
-                        <%= house.name %>
-                      </dd>
-                    </div>
-                    <div class="sm:col-span-1">
-                      <dt class="text-sm leading-5 font-medium text-gray-500">
-                        Status
-                      </dt>
-                      <dd class="mt-1 text-sm leading-5 text-gray-900">
-                        <% if house.status.present? %>
-                          <i class="fas fa-check-circle text-green-500 mr-1"></i>
-                          Approved
-                        <% else %>
-                          <i class="fas fa-times-circle text-red-500 mr-1"></i>
-                          Pending Approval
-                        <% end %>
-                      </dd>
-                    </div>
-                    <div class="sm:col-span-1">
-                      <dt class="text-sm leading-5 font-medium text-gray-500">
-                        Address
-                      </dt>
-                      <dd class="mt-1 text-sm leading-5 text-gray-900">
-                        <%= house.address %>
-                      </dd>
-                    </div>
-                    <div class="sm:col-span-1">
-                      <dt class="text-sm leading-5 font-medium text-gray-500">
-                        Ward
-                      </dt>
-                      <dd class="mt-1 text-sm leading-5 text-gray-900">
-                        <%= house.ward %>
-                      </dd>
-                    </div>
-                    <div class="sm:col-span-1">
-                      <dt class="text-sm leading-5 font-medium text-gray-500">
-                        Panchayat
-                      </dt>
-                      <dd class="mt-1 text-sm leading-5 text-gray-900">
-                        <%= house.panchayat.name %>
-                      </dd>
-                    </div>
-                    <div class="flex">
-                      <div class="text-sm flex px-6 bg-orange-200 rounded-lg items-center py-1 font-semibold">
-                        <sapn>View</sapn>
-                        <i class="fas fa-eye ml-2"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+            <%= render 'house', house: house %>
           </li>
         <% end %>
         <li class="border-t border-gray-200">
@@ -225,101 +166,6 @@
               </div>
             </div>
           <% end %>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="mt-4 flex">
-    <div class="py-6 px-4 text-3xl font-bold">
-      3
-    </div>
-    <div class="bg-white shadow overflow-hidden sm:rounded-md w-full">
-      <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 rounded-t-lg">
-        <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-no-wrap">
-          <div class="ml-4 mt-2">
-            <h1 class="text-3xl font-medium text-gray-900">
-              Enter Health Reports
-            </h1>
-            <div>
-              Add details about your Health
-            </div>
-          </div>
-        </div>
-      </div>
-      <ul>
-
-        <% @application.houses.each do |house| %>
-          <li class="border-t border-gray-200">
-            <%= link_to application_house_path(@application, house), class: "block hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-150 ease-in-out" do %>
-              <div class="flex items-center px-4 py-4 sm:px-6">
-                <div class="min-w-0 flex-1 flex items-center">
-                  <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-                    <div class="sm:col-span-1">
-                      <dt class="text-sm leading-5 font-medium text-gray-500">
-                        House Name
-                      </dt>
-                      <dd class="mt-1 text-sm leading-5 text-gray-900">
-                        <%= house.name %>
-                      </dd>
-                    </div>
-                    <div class="sm:col-span-1">
-                      <dt class="text-sm leading-5 font-medium text-gray-500">
-                        Status
-                      </dt>
-                      <dd class="mt-1 text-sm leading-5 text-gray-900">
-                        <% if house.status.present? %>
-                          <i class="fas fa-check-circle text-green-500 mr-1"></i>
-                          Approved
-                        <% else %>
-                          <i class="fas fa-times-circle text-red-500 mr-1"></i>
-                          Pending Approval
-                        <% end %>
-                      </dd>
-                    </div>
-                    <div class="sm:col-span-1">
-                      <dt class="text-sm leading-5 font-medium text-gray-500">
-                        Address
-                      </dt>
-                      <dd class="mt-1 text-sm leading-5 text-gray-900">
-                        <%= house.address %>
-                      </dd>
-                    </div>
-                    <div class="sm:col-span-1">
-                      <dt class="text-sm leading-5 font-medium text-gray-500">
-                        Ward
-                      </dt>
-                      <dd class="mt-1 text-sm leading-5 text-gray-900">
-                        <%= house.ward %>
-                      </dd>
-                    </div>
-                    <div class="sm:col-span-1">
-                      <dt class="text-sm leading-5 font-medium text-gray-500">
-                        Panchayat
-                      </dt>
-                      <dd class="mt-1 text-sm leading-5 text-gray-900">
-                        <%= house.panchayat.name %>
-                      </dd>
-                    </div>
-                    <div class="flex">
-                      <div class="text-sm flex px-6 bg-orange-200 rounded-lg items-center py-1 font-semibold">
-                        <sapn>View</sapn>
-                        <i class="fas fa-eye ml-2"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </li>
-        <% end %>
-        <li class="border-t border-gray-200">
-          <div class="flex items-center px-4 py-4 sm:px-6">
-            <div class="min-w-0 flex-1 flex items-center">
-              <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-                + Add New House
-              </div>
-            </div>
-          </div>
         </li>
       </ul>
     </div>

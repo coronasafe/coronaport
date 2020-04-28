@@ -1,0 +1,60 @@
+<%= link_to application_house_path(@application, house), class: "block hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-150 ease-in-out" do %>
+  <div class="flex items-center px-4 py-4 sm:px-6">
+    <div class="min-w-0 flex-1 flex items-center">
+      <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+        <div class="sm:col-span-1">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            House Name
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <%= house.name %>
+          </dd>
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Status
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <% if house.status.present? %>
+              <i class="fas fa-check-circle text-green-500 mr-1"></i>
+              Approved
+            <% else %>
+              <i class="fas fa-times-circle text-red-500 mr-1"></i>
+              Pending Approval
+            <% end %>
+          </dd>
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Address
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <%= house.address %>
+          </dd>
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Ward
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <%= house.ward %>
+          </dd>
+        </div>
+        <div class="sm:col-span-1">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Panchayat
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <%= house.panchayat.name %>
+          </dd>
+        </div>
+        <div class="flex">
+          <div class="text-sm flex px-6 bg-orange-200 rounded-lg items-center py-1 font-semibold">
+            <sapn>View</sapn>
+            <i class="fas fa-eye ml-2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
