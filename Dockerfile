@@ -1,10 +1,5 @@
 FROM ruby:2.7.0-alpine as builder
 
-ARG DATABASE_URL
-ARG RAILS_ENV
-ARG SECRET_KEY_BASE
-ARG NPM_CONFIG_PRODUCTION
-
 RUN apk add \
 build-base \
 curl \
@@ -32,7 +27,7 @@ RUN bundle config --global frozen 1 \
 COPY . /app/
 RUN yarn install
 
-RUN RAILS_ENV='production' rails assets:precompile
+RUN SECRET_KEY_BASE='dummy' RAILS_ENV='production' rails assets:precompile
 RUN rm -rf node_modules tmp/* log/*
 
 FROM ruby:2.7.0-alpine
