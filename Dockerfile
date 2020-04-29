@@ -44,12 +44,6 @@ COPY --from=builder /app/ /app/
 
 WORKDIR /app
 
-ENV RAILS_LOG_TO_STDOUT true
-ENV RAILS_SERVE_STATIC_FILES enabled
-ENV NPM_CONFIG_PRODUCTION false
-ENV RAILS_ENV production
-ENV RACK_ENV production
-
 EXPOSE 3000
 
 CMD ["/bin/sh", "-c", "rails db:migrate && rails server -b 0.0.0.0 -p 3000"]
