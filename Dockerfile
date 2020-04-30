@@ -45,5 +45,3 @@ COPY --from=builder /app/ /app/
 WORKDIR /app
 
 EXPOSE 3000
-
-CMD ["/bin/sh", "-c", "rails db:migrate && rails server -b 0.0.0.0 -p 3000"]
