@@ -1,12 +1,15 @@
 <div class="max-w-3xl mx-auto">
   <div class="bg-white shadow overflow-hidden  rounded-lg mt-4 px-2 py-4">
-    <div class="text-xl font-black text-center">
+    <div class="text-2xl font-black text-center">
       <%= @contact.name %>
     </div>
-    <div class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2 text-center">
+    <div class="mt-1 text-lg leading-5 text-gray-900 sm:mt-0 sm:col-span-2 text-center">
+      Passport Number: <%= @contact.passport_number %>
+    </div>
+    <div class="mt-1 text-lg leading-5 text-gray-900 sm:mt-0 sm:col-span-2 text-center">
       <%= @contact.gender.to_s.capitalize() %>, <%= @contact.age %> years old
     </div>
-    <div class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2 text-center">
+    <div class="mt-1 text-lg leading-5 text-gray-900 sm:mt-0 sm:col-span-2 text-center">
       Travellers: <%= @application.contacts.count %>
     </div>
   </div>

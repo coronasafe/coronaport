@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_075530) do
+ActiveRecord::Schema.define(version: 2020_05_03_082201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 2020_05_03_075530) do
     t.boolean "has_tested"
     t.boolean "was_positive"
     t.string "test_type"
+    t.string "seat_number"
+    t.string "status"
     t.index ["application_id"], name: "index_contacts_on_application_id"
     t.index ["panchayat_id"], name: "index_contacts_on_panchayat_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
