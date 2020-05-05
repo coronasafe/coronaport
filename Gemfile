@@ -35,6 +35,14 @@ gem 'enum_help'
 # Qr code
 gem 'rqrcode'
 
+gem 'activeadmin'
+
+# Plus integrations with:
+
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
