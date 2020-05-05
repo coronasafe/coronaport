@@ -132,103 +132,103 @@
       </ul>
     </div>
   </div>
-  <div class="mt-4 flex">
-    <div class="py-6 px-4 text-3xl font-bold">
-      2
-    </div>
-    <div class="bg-white shadow overflow-hidden sm:rounded-md w-full">
-      <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 rounded-t-lg">
-        <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-no-wrap">
-          <div class="ml-4 mt-2">
-            <h1 class="text-3xl font-medium text-gray-900">
-              Enter House Details
-            </h1>
-            <div>
-              Add your house details
-            </div>
-          </div>
-        </div>
-      </div>
-      <ul>
+<!--  <div class="mt-4 flex">-->
+  <!--    <div class="py-6 px-4 text-3xl font-bold">-->
+  <!--      2-->
+  <!--    </div>-->
+  <!--    <div class="bg-white shadow overflow-hidden sm:rounded-md w-full">-->
+  <!--      <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 rounded-t-lg">-->
+  <!--        <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-no-wrap">-->
+  <!--          <div class="ml-4 mt-2">-->
+  <!--            <h1 class="text-3xl font-medium text-gray-900">-->
+  <!--              Enter House Details-->
+  <!--            </h1>-->
+  <!--            <div>-->
+  <!--              Add your house details-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--      <ul>-->
 
-        <% @application.houses.each do |house| %>
-          <li class="border-t border-gray-200">
-            <%= render 'house', house: house %>
-          </li>
-        <% end %>
-        <li class="border-t border-gray-200">
-          <%= link_to confirm_application_houses_path(@application), class: "block hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-150 ease-in-out" do %>
-            <div class="flex items-center px-4 py-4 sm:px-6">
-              <div class="min-w-0 flex-1 flex items-center">
-                <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-                  + Add New House
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="mt-4 flex">
-    <div class="py-6 px-4 text-3xl font-bold">
-      3
-    </div>
-    <div class="bg-white shadow overflow-hidden sm:rounded-md w-full">
-      <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 rounded-t-lg">
-        <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-no-wrap">
-          <div class="ml-4 mt-2">
-            <h1 class="text-3xl font-medium text-gray-900">
-              Enter Vehicle Details
-            </h1>
-            <div>
-              You will only be allowed to travel with vehicle pass issued by us on mainland Kerala
-            </div>
-          </div>
-        </div>
-      </div>
-      <ul>
-        <% @application.vehicles.each do |vehicle| %>
-          <li class="border-t border-gray-200">
-            <%= link_to edit_application_vehicle_path(@application, vehicle), class: "block hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-150 ease-in-out" do %>
-              <div href="#" class="block hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-150 ease-in-out">
-                <div class="flex items-center px-4 py-4 sm:px-6">
-                  <div class="min-w-0 flex-1 flex items-center">
-                    <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-2">
-                      <div>
-                        <div class="text-sm leading-5 font-medium text-indigo-600 truncate"><%= vehicle.number_plate %></div>
-                      </div>
+  <%# @application.houses.each do |house| %>
+  <!--          <li class="border-t border-gray-200">-->
+  <%#= render 'house', house: house %>
+  <!--          </li>-->
+  <%# end %>
+  <!--        <li class="border-t border-gray-200">-->
+  <%#= link_to confirm_application_houses_path(@application), class: "block hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-150 ease-in-out" do %>
+  <!--            <div class="flex items-center px-4 py-4 sm:px-6">-->
+  <!--              <div class="min-w-0 flex-1 flex items-center">-->
+  <!--                <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">-->
+  <!--                  + Add New House-->
+  <!--                </div>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <%# end %>
+  <!--        </li>-->
+  <!--      </ul>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--  <div class="mt-4 flex">-->
+  <!--    <div class="py-6 px-4 text-3xl font-bold">-->
+  <!--      3-->
+  <!--    </div>-->
+  <!--    <div class="bg-white shadow overflow-hidden sm:rounded-md w-full">-->
+  <!--      <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 rounded-t-lg">-->
+  <!--        <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-no-wrap">-->
+  <!--          <div class="ml-4 mt-2">-->
+  <!--            <h1 class="text-3xl font-medium text-gray-900">-->
+  <!--              Enter Vehicle Details-->
+  <!--            </h1>-->
+  <!--            <div>-->
+  <!--              You will only be allowed to travel with vehicle pass issued by us on mainland Kerala-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--      <ul>-->
+  <%# @application.vehicles.each do |vehicle| %>
+  <!--          <li class="border-t border-gray-200">-->
+  <%#= link_to edit_application_vehicle_path(@application, vehicle), class: "block hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-150 ease-in-out" do %>
+  <!--              <div href="#" class="block hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-150 ease-in-out">-->
+  <!--                <div class="flex items-center px-4 py-4 sm:px-6">-->
+  <!--                  <div class="min-w-0 flex-1 flex items-center">-->
+  <!--                    <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-2">-->
+  <!--                      <div>-->
+  <!--                        <div class="text-sm leading-5 font-medium text-indigo-600 truncate"><%#= vehicle.number_plate %></div>-->
+  <!--                      </div>-->
 
-                      <div>
-                        <div class="text-sm leading-5 text-gray-900">
-                          <%= vehicle.seats&.titleize %> seater
-                        </div>
-                      </div>
-                      <div class="flex mx-auto">
-                        <div class="text-sm flex px-4 bg-orange-200 rounded-lg items-center py-1 font-semibold">
-                          <sapn>Edit</sapn>
-                          <i class="fas fa-pencil-alt ml-2"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-        <% end %>
-        <li class="border-t border-gray-200">
-          <%= link_to new_application_vehicle_path(@application), class: "block hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-150 ease-in-out" do %>
+  <!--                      <div>-->
+  <!--                        <div class="text-sm leading-5 text-gray-900">-->
+  <!--                          <%#= vehicle.seats&.titleize %> seater-->
+  <!--                        </div>-->
+  <!--                      </div>-->
+  <!--                      <div class="flex mx-auto">-->
+  <!--                        <div class="text-sm flex px-4 bg-orange-200 rounded-lg items-center py-1 font-semibold">-->
+  <!--                          <sapn>Edit</sapn>-->
+  <!--                          <i class="fas fa-pencil-alt ml-2"></i>-->
+  <!--                        </div>-->
+  <!--                      </div>-->
+  <!--                    </div>-->
+  <!--                  </div>-->
+  <!--                </div>-->
+  <!--              </div>-->
+  <%# end %>
+  <%# end %>
+  <!--        <li class="border-t border-gray-200">-->
+  <%#= link_to new_application_vehicle_path(@application), class: "block hover:bg-gray-300 focus:outline-none focus:bg-gray-300 transition duration-150 ease-in-out" do %>
 
-            <div class="flex items-center px-4 py-4 sm:px-6">
-              <div class="min-w-0 flex-1 flex items-center">
-                <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-                  + Add new vehicle
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <!--            <div class="flex items-center px-4 py-4 sm:px-6">-->
+  <!--              <div class="min-w-0 flex-1 flex items-center">-->
+  <!--                <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">-->
+  <!--                  + Add new vehicle-->
+  <!--                </div>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <%# end %>
+  <!--        </li>-->
+  <!--      </ul>-->
+  <!--    </div>-->
+  <!--  </div>-->
 </div>

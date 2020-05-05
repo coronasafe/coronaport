@@ -14,9 +14,9 @@ document.addEventListener("turbolinks:load", function () {
   var dropDownSelects = new Choices('#dropdown-choice-select')
 })
 
-// document.addEventListener("turbolinks:load", function() {
-//   var dropDownSelects = new Choices('#dropdown-choice-select-1')
-// })
+document.addEventListener("turbolinks:load", function() {
+  var dropDownSelects = new Choices('#dropdown-choice-select-1')
+})
 
 require("@rails/ujs").start()
 require("turbolinks").start()

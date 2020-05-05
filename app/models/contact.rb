@@ -6,6 +6,9 @@ class Contact < ApplicationRecord
   belongs_to :user
   belongs_to :application
 
+  has_many :contact_symptoms
+  has_many :symptoms, through: :contact_symptoms
+
   def is_vulnerable
     has_diabetes || has_hyper_tension || has_heart_disease || has_heart_disease || has_kidney_disease || primary_contact || has_tested || was_positive
   end

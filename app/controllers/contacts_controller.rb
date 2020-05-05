@@ -31,6 +31,9 @@ class ContactsController < ApplicationController
     else
       respond_to do |format|
         if @contact.save!
+          Symptom.where(id: params['contact']['symptom_ids']).each do |s|
+            ContactSymptom.create!(contact: @contact, symptom: s)
+          end
           format.html { redirect_to application_contact_path(@application, @contact), notice: "Contact was successfully created." }
           format.json { render :show, status: :created, location: @contact }
         else
@@ -44,6 +47,10 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
+        @contact.contact_symptoms.destroy_all
+        Symptom.where(id: params['contact']['symptom_ids']).each do |s|
+          ContactSymptom.create!(contact: @contact, symptom: s)
+        end
         format.html { redirect_to application_contact_path(@application, @contact), notice: "Contact was successfully created." }
         format.json { render :show, status: :ok, location: @contact }
       else
@@ -87,6 +94,7 @@ class ContactsController < ApplicationController
       :has_kidney_disease,
       :is_pregnant,
       :seat_number,
+      :symptom_ids,
       :recent_history,
       :symptoms,
       :primary_contact,

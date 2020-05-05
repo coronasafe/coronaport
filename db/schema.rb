@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_082201) do
+ActiveRecord::Schema.define(version: 2020_05_05_191311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 2020_05_03_082201) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["contact_id"], name: "index_calls_on_contact_id"
     t.index ["user_id"], name: "index_calls_on_user_id"
+  end
+
+  create_table "contact_symptoms", force: :cascade do |t|
+    t.bigint "contact_id", null: false
+    t.bigint "symptom_id"
+    t.index ["contact_id"], name: "index_contact_symptoms_on_contact_id"
+    t.index ["symptom_id"], name: "index_contact_symptoms_on_symptom_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -130,6 +137,12 @@ ActiveRecord::Schema.define(version: 2020_05_03_082201) do
     t.string "port_type"
   end
 
+  create_table "symptoms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -156,5 +169,6 @@ ActiveRecord::Schema.define(version: 2020_05_03_082201) do
 
   add_foreign_key "calls", "contacts"
   add_foreign_key "calls", "users"
+  add_foreign_key "contact_symptoms", "contacts"
   add_foreign_key "vehicles", "applications"
 end

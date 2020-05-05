@@ -53,51 +53,51 @@
       </div>
     </div>
   <% end %>
-  <div class="rounded-md bg-blue-50 p-4 border-blue-400 mt-4 shadow border">
-    <div class="flex">
-      <div class="flex-shrink-0">
-        <svg class="h-5 w-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
-        </svg>
-      </div>
-      <div class="ml-3">
-        <h3 class="text-sm leading-5 font-medium text-blue-800">
-          Details of stay
-        </h3>
-        <div class="mt-2 text-sm leading-5 text-blue-700">
-          <% if @application.houses.present? %>
-            <% if "accepted".in? @application.houses.pluck(:status) %>
-              Has an approved house
-            <% else %>
-              Does not have an approved house, Please move to quarantine center
-            <% end %>
-          <% else %>
-            Please ask to show a booking confirmation from stay
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+<!--  <div class="rounded-md bg-blue-50 p-4 border-blue-400 mt-4 shadow border">-->
+<!--    <div class="flex">-->
+<!--      <div class="flex-shrink-0">-->
+<!--        <svg class="h-5 w-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">-->
+<!--          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>-->
+<!--        </svg>-->
+<!--      </div>-->
+<!--      <div class="ml-3">-->
+<!--        <h3 class="text-sm leading-5 font-medium text-blue-800">-->
+<!--          Details of stay-->
+<!--        </h3>-->
+<!--        <div class="mt-2 text-sm leading-5 text-blue-700">-->
+          <%# if @application.houses.present? %>
+            <%# if "accepted".in? @application.houses.pluck(:status) %>
+<!--              Has an approved house-->
+            <%# else %>
+<!--              Does not have an approved house, Please move to quarantine center-->
+            <%# end %>
+          <%# else %>
+<!--            Please ask to show a booking confirmation from stay-->
+          <%# end %>
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <% if @application.vehicles.blank? %>
-    <div class="rounded-md bg-purple-50 p-4 border-purple-400 mt-4 shadow border">
-      <div class="flex">
-        <div class="flex-shrink-0">
-          <svg class="h-5 w-5 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
-          </svg>
-        </div>
-        <div class="ml-3">
-          <h3 class="text-sm leading-5 font-medium text-purple-800">
-            Transportation
-          </h3>
-          <div class="mt-2 text-sm leading-5 text-purple-700">
-            Please arrange Airport Taxi
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <%# if @application.vehicles.blank? %>
+<!--    <div class="rounded-md bg-purple-50 p-4 border-purple-400 mt-4 shadow border">-->
+<!--      <div class="flex">-->
+<!--        <div class="flex-shrink-0">-->
+<!--          <svg class="h-5 w-5 text-purple-400" fill="currentColor" viewBox="0 0 20 20">-->
+<!--            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>-->
+<!--          </svg>-->
+<!--        </div>-->
+<!--        <div class="ml-3">-->
+<!--          <h3 class="text-sm leading-5 font-medium text-purple-800">-->
+<!--            Transportation-->
+<!--          </h3>-->
+<!--          <div class="mt-2 text-sm leading-5 text-purple-700">-->
+<!--            Please arrange Airport Taxi-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+  <%# end %>
 
   <div class="mt-4 font-semibold text-xl">
     Personal Details
@@ -111,7 +111,7 @@
               Symptoms
             </dt>
             <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-              <div class="font-bold"><%= @contact.symptoms %></div>
+              <div class="font-bold"><%= @contact.symptoms.pluck(:name).join(', ') %></div>
             </dd>
           </div>
           <div class="mt-8 sm:mt-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:px-6 sm:py-5">
@@ -154,39 +154,39 @@
       </div>
     </div>
   </div>
-  <div>
-    <div class="mt-4 font-semibold text-xl">
-      House Details
-    </div>
-    <% if @application.houses.blank? %>
-      <div class="bg-blue-200 border-blue-400 text-blue-800 font-bold rounded-lg border mt-4 shadow p-4 ">
-        Show Details for Quarantine Stay Booking
-      </div>
-    <% end %>
-    <% @application.houses.each do |house| %>
-      <div class="bg-white rounded-lg border mt-4 shadow ">
-        <%= render 'applications/house', house: house %>
-      </div>
-    <% end %>
-  </div>
-  <div>
-    <div class="mt-4 font-semibold text-xl">
-      Vehicle Details
-    </div>
-    <% if @application.vehicles.blank? %>
-      <div class="bg-purple-200 border-purple-400 text-purple-800 font-bold rounded-lg border mt-4 shadow p-4 ">
-        Please Arrange Airport Taxi
-      </div>
-    <% end %>
-    <% @application.vehicles.each do |v| %>
-      <div class="bg-white rounded-lg border mt-4 shadow p-4">
-        <div class="text-lg">
-          Vehicle number:
-          <span class="text-md font-semibold">
-          <%= v.number_plate %>
-          </span>
-        </div>
-      </div>
-    <% end %>
-  </div>
+<!--  <div>-->
+  <!--    <div class="mt-4 font-semibold text-xl">-->
+  <!--      House Details-->
+  <!--    </div>-->
+  <%# if @application.houses.blank? %>
+  <!--      <div class="bg-blue-200 border-blue-400 text-blue-800 font-bold rounded-lg border mt-4 shadow p-4 ">-->
+  <!--        Show Details for Quarantine Stay Booking-->
+  <!--      </div>-->
+  <%# end %>
+  <%# @application.houses.each do |house| %>
+  <!--      <div class="bg-white rounded-lg border mt-4 shadow ">-->
+  <%#= render 'applications/house', house: house %>
+  <!--      </div>-->
+  <%# end %>
+  <!--  </div>-->
+  <!--  <div>-->
+  <!--    <div class="mt-4 font-semibold text-xl">-->
+  <!--      Vehicle Details-->
+  <!--    </div>-->
+  <%# if @application.vehicles.blank? %>
+  <!--      <div class="bg-purple-200 border-purple-400 text-purple-800 font-bold rounded-lg border mt-4 shadow p-4 ">-->
+  <!--        Please Arrange Airport Taxi-->
+  <!--      </div>-->
+  <%# end %>
+  <%# @application.vehicles.each do |v| %>
+  <!--      <div class="bg-white rounded-lg border mt-4 shadow p-4">-->
+  <!--        <div class="text-lg">-->
+  <!--          Vehicle number:-->
+  <!--          <span class="text-md font-semibold">-->
+  <%#= v.number_plate %>
+  <!--          </span>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <%# end %>
+  <!--  </div>-->
 </div>
