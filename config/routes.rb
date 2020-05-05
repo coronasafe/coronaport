@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :contacts, except: [:destroy] do
       get :summary, on: :member
     end
-    resources :ports, only: [:show] do
-    end
+  end
+  resources :ports, only: [:show] do
   end
 end
