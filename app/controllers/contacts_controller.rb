@@ -87,7 +87,9 @@ class ContactsController < ApplicationController
   end
 
   def application
-    @application ||= Application.find(params[:application_id])
+    @application ||= begin
+      current_user.is_admin? ? Application.find(params[:application_id]) : current_user.applications.find(params[:application_id])
+    end
   end
 
   def scope_access(contacts)

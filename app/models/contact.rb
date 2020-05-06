@@ -15,6 +15,6 @@ class Contact < ApplicationRecord
   end
 
   def is_red_flagged
-    status == 'red'
+    status == 'red' || symptoms.any?
   end
 end
