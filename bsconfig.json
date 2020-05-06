@@ -20,7 +20,8 @@
     "@glennsl/bs-json",
     "bs-fetch",
     "bs-webapi",
-    "bs-date-fns"
+    "bs-date-fns",
+    "@pupilfirst/multiselect-dropdown"
   ],
   "refmt": 3,
   "warnings": {

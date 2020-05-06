@@ -75,8 +75,13 @@ let sendFormData = (url, formData, responseCB, errorCB) =>
   )
   |> handleResponse(responseCB, errorCB);
 
+let getPayload = (url, responseCB, errorCB) =>
+  Fetch.fetch(url) |> handleResponse(responseCB, errorCB);
+
 let create = (url, payload, responseCB, errorCB) =>
   sendPayload(url, payload, responseCB, errorCB, Post);
 
 let update = (url, payload, responseCB, errorCB) =>
   sendPayload(url, payload, responseCB, errorCB, Patch);
+
+let get = (url, responseCB, errorCB) => getPayload(url, responseCB, errorCB);

@@ -795,6 +795,22 @@
   resolved "https://registry.yarnpkg.com/@glennsl/bs-json/-/bs-json-5.0.2.tgz#cfb85d94d370ec6dc17849e0ddb1a51eee08cfcc"
   integrity sha512-vVlHJNrhmwvhyea14YiV4L5pDLjqw1edE3GzvMxlbPPQZVhzgO3sTWrUxCpQd2gV+CkMfk4FHBYunx9nWtBoDg==
 
+"@pupilfirst/multiselect-dropdown@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@pupilfirst/multiselect-dropdown/-/multiselect-dropdown-0.1.9.tgz#8ff7672acb3fb5504f996470f8c8941b35f8ea15"
+  integrity sha512-UgdjpYtI5kb5mDAjyGlH+9hP1zA3gUXQk3ebQ75pQG0lLikxt9G7luxcO2KHhnQekkcQX7f4Ye9NPt7MGHz/pQ==
+  dependencies:
+    "@pupilfirst/pf-icon" "^0.1.11"
+    bs-webapi "^0.15.2"
+    reason-react ">=0.7.0"
+
+"@pupilfirst/pf-icon@^0.1.11":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@pupilfirst/pf-icon/-/pf-icon-0.1.11.tgz#9cb3d3c4156cd35c95c9b807ab9c090e86dd7f57"
+  integrity sha512-2GTntvKs+EJ5Twl0kmYPfS88iu2dSD7thWVkBf73CDfqJAPLFbRZ0n3ILFcuFHOW+UfrRnnL2DkrHe2qQWtFZw==
+  dependencies:
+    reason-react ">=0.7.0"
+
 "@rails/actioncable@^6.0.0":
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.2.tgz#bcba9bcd6ee09a47c6628336e07399a68ca87814"
@@ -6283,6 +6299,11 @@ reason-react@0.7.0:
   dependencies:
     react ">=16.8.1"
     react-dom ">=16.8.1"
+
+reason-react@>=0.7.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.8.0.tgz#a55143f95a872596c92b54595e7904c03ee7c9db"
+  integrity sha512-97AfK3eCF6vfP8rnbq3k6GgXsZt//OiPMINTUk5luJ8W0Wt/JaYsDG6eWKP8Zx3gPpxSU1EPjB1pUm6o6fBnFA==
 
 redent@^1.0.0:
   version "1.0.0"

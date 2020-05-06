@@ -4,6 +4,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.10.1",
     "@glennsl/bs-json": "^5.0.1",
+    "@pupilfirst/multiselect-dropdown": "^0.1.9",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",

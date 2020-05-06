@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_061639) do
+ActiveRecord::Schema.define(version: 2020_05_06_094953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -156,6 +156,10 @@ ActiveRecord::Schema.define(version: 2020_05_06_061639) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "district_id"
+    t.string "lb_code"
+    t.string "lb_type"
+    t.integer "lb_type_csn"
+    t.string "lb_name_english"
     t.index ["district_id"], name: "index_panchayats_on_district_id"
   end
 

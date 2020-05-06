@@ -1,4 +1,8 @@
 <section class="px-6 py-4 mx-auto">
+  <% content_for(:tail) do %>
+    <%= javascript_pack_tag 'LocationPack', nonce: true %>
+  <% end %>
+
   <%= simple_form_for [@application, @contact || @application.contacts.build], defaults: { input_html: { class: 'form-input mt-1 font-sans' }, wrapper_html: { class: 'flex flex-col my-4' }, label_html: { class: 'mb-1' } } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -17,13 +21,16 @@
     <%#= f.input :date_of_contact, label: 'Date of Arrival / Contact', as: :date, input_html: { class: 'form-select p-2 border' } %>
     <%#= f.input :tracking_type, input_html: { class: 'form-select' } %>
     <!--    </div>-->
+
+    <div id="react-root"></div>
+
     <div>
       <hr class="pb-4"/>
       <%= f.input :house_name, label: 'Address', required: true %>
       <%#= f.input :number_of_family_members %>
       <%= f.input :ward, required: true %>
       <%#= f.input :landmark %>
-      <%= f.association :panchayat, collection: Panchayat.all(), input_html: { class: 'form-select', id: 'dropdown-choice-select-1' }, required: true %>
+
     </div>
     <div class="mt-4 text-xl font-semibold">
       B. Self Declaration

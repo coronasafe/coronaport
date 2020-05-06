@@ -34,23 +34,19 @@ class ContactsController < ApplicationController
   def create
     @contact = @application.contacts.create(contact_params)
     @contact.user = current_user
-    existing_contact = Contact.find_by(phone: contact_params["phone"].squish)
-    if existing_contact
-      redirect_to application_contact_url(@application, existing_contact)
-    else
-      respond_to do |format|
-        if @contact.save!
-          Symptom.where(id: params['contact']['symptom_ids']).each do |s|
-            ContactSymptom.create!(contact: @contact, symptom: s)
-          end
-          format.html { redirect_to application_contact_path(@application, @contact), notice: "Contact was successfully created." }
-          format.json { render :show, status: :created, location: @contact }
-        else
-          format.html { render :new }
-          format.json { render json: @contact.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if @contact.save!
+        Symptom.where(id: params['contact']['symptom_ids']).each do |s|
+          ContactSymptom.create!(contact: @contact, symptom: s)
         end
+        format.html { redirect_to application_contact_path(@application, @contact), notice: "Contact was successfully created." }
+        format.json { render :show, status: :created, location: @contact }
+      else
+        format.html { render :new }
+        format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   def update
@@ -102,9 +98,13 @@ class ContactsController < ApplicationController
     end
   end
 
+  def panchayat
+    Panchayat.find_by(lb_code: params[:contact][:lb_code])
+  end
+
   # Only allow a list of trusted parameters through.
   def contact_params
-    params.require(:contact).permit(:name, :passport_number, :phone, :gender, :age, :house_name, :ward, :landmark, :panchayat_id, :ration_type, :willing_to_pay, :number_of_family_members, :feedback, :user_id, :date_of_contact, :tracking_type, :panchayat_feedback,
+    params.require(:contact).permit(:name, :passport_number, :phone, :gender, :age, :house_name, :ward, :landmark, :ration_type, :willing_to_pay, :number_of_family_members, :feedback, :user_id, :date_of_contact, :tracking_type, :panchayat_feedback,
       :has_diabetes,
       :has_hyper_tension,
       :has_heart_disease,
@@ -118,6 +118,6 @@ class ContactsController < ApplicationController
       :has_tested,
       :was_positive,
       :test_type
-    )
+    ).merge(panchayat_id: panchayat&.id)
   end
 end
