@@ -42,7 +42,7 @@ let make = (~inputName, ~inputId) => {
   <div>
     <div className="mt-4">
       <DropdownSearch
-        label="Select District*"
+        label="*Select District"
         lsgs={state.lsgs |> Lsg.districts}
         selected={
           state.district |> OptionUtils.mapWithDefault(a => [|a|], [||])

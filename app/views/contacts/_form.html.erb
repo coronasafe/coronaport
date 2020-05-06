@@ -1,4 +1,8 @@
 <section class="px-6 py-4 mx-auto">
+  <% content_for(:head) do %>
+    <%= stylesheet_pack_tag 'LocationPack', media: nil %>
+  <% end %>
+
   <% content_for(:tail) do %>
     <%= javascript_pack_tag 'LocationPack', nonce: true %>
   <% end %>
@@ -25,7 +29,6 @@
     <div id="react-root"></div>
 
     <div>
-      <hr class="pb-4"/>
       <%= f.input :house_name, label: 'Address', required: true %>
       <%#= f.input :number_of_family_members %>
       <%= f.input :ward, required: true %>
@@ -36,7 +39,7 @@
       B. Self Declaration
     </div>
     <div>
-      <%= f.association :symptoms, label: 'Do you have any symptoms of COVID-19', collection: Symptom.all(), input_html: { class: 'form-select', id: 'dropdown-choice-select' }, required: true %>
+      <%= f.association :symptoms, label: 'Do you have any symptoms of COVID-19', collection: Symptom.all(), input_html: { class: 'form-select', id: 'dropdown-choice-select' }, required: false %>
       <%= f.input :has_diabetes, label: 'Do you have diabetes?', input_html: { class: "form-radio m-2" }, collection: [['Yes', true], ['No', false]], as: :radio_buttons, required: true %>
       <%= f.input :has_hyper_tension, label: 'Do you have hyper tension?', input_html: { class: "form-radio m-2" }, collection: [['Yes', true], ['No', false]], as: :radio_buttons, required: true %>
       <%= f.input :has_heart_disease, label: 'Do you have heart disease?', input_html: { class: "form-radio m-2" }, collection: [['Yes', true], ['No', false]], as: :radio_buttons, required: true %>
