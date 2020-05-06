@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
     resources :contacts, except: [:destroy] do
       get :summary, on: :member
+      get :print, on: :member
       get :set_red_flag, on: :member
     end
   end

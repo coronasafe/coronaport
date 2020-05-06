@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy, :summary, :set_red_flag]
-  before_action :application, only: [:show, :new, :edit, :update, :create, :summary, :set_red_flag]
+  before_action :set_contact, only: [:show, :edit, :update, :destroy, :summary, :set_red_flag, :print]
+  before_action :application, only: [:show, :new, :edit, :update, :create, :summary, :set_red_flag, :print]
 
   # GET /contacts
   # GET /contacts.json
@@ -73,6 +73,9 @@ class ContactsController < ApplicationController
     else
       redirect_to root_path, notice: "Access Denied! Only Admins are Allowed Access"
     end
+  end
+
+  def print
   end
 
   private
