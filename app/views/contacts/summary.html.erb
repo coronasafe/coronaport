@@ -1,3 +1,6 @@
+<div class="mt-3 lg:mt-0 flex justify-end max-w-4xl">
+  <%= link_to 'Edit Traveller', edit_application_contact_path(@application, @contact), class: 'bg-white inline-flex items-center px-3 py-2 rounded-md text-sm font-medium leading-5 rounded shadow text-gray-800' %>
+</div>
 <div class="max-w-3xl mx-auto">
   <div class="bg-white shadow overflow-hidden  rounded-lg mt-4 px-2 py-4">
     <div class="text-2xl font-black text-center">
@@ -14,7 +17,7 @@
     </div>
   </div>
   <% if @contact.status.blank? %>
-    <%= link_to 'Red Flag and Move to Isolation', set_red_flag_application_contact_path(@application, @contact), class: "btn btn-danger mt-4" %>
+    <%= link_to 'Click here to Red Flag for Isolation', set_red_flag_application_contact_path(@application, @contact), class: "btn btn-danger mt-4" %>
   <% else %>
     <div class="rounded-md bg-red-50 p-4 border-red-400 mt-4 shadow border">
       <div class="flex">
