@@ -1,62 +1,108 @@
-<div class="flex mt-4">
-  <div class="w-1/2">
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Name of the Passenger</div>
-      <div><%= @contact.name %></div>
+<% @bg_white = true %>
+<div>
+  <div class="md:w-1/2 flex items-center px-4">
+    <%
+      qrcode = RQRCode::QRCode.new("#{summary_application_contact_url(@contact.application, @contact)}")
+      # With default options specified explicitly
+      svg = qrcode.as_svg(offset: 0, color: '000',
+        shape_rendering: 'crispEdges',
+        module_size: 5,
+        standalone: true)
+    %>
+
+    <%= raw svg %>
+  </div>
+  <div class="flex md:flex-row flex-col">
+    <div class="md:w-1/2 p-2">
+      <div class="font-semibold">
+        Personal Information
+      </div>
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4 mt-2">
+        <div>Name of the Passenger</div>
+        <div><%= @contact.name %></div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4">
+        <div>Flight Number</div>
+        <div><%= @application.flight_number %></div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4">
+        <div>Passport Number</div>
+        <div><%= @contact.passport_number %></div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4">
+        <div>Nationality</div>
+        <div>Indian</div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4">
+        <div>Age</div>
+        <div><%= @contact.age %></div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4">
+        <div>Date of Arrival</div>
+        <div><%= @application.arrival_on&.to_date %></div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4">
+        <div>Port of final Destination</div>
+        <div><%= @application.port.name %></div>
+      </div>
     </div>
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Flight Number</div>
-      <div><%= @application.flight_number %></div>
-    </div>
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Passport Number</div>
-      <div><%= @contact.passport_number %></div>
-    </div>
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Nationality</div>
-      <div>Indian</div>
-    </div>
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Age</div>
-      <div><%= @contact.age %></div>
-    </div>
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Date of Arrival</div>
-      <div><%= @contact.age %></div>
-    </div>
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Date of Arrival</div>
-      <div>Indian</div>
+    <div class="md:w-1/2 p-2">
+      <div class="font-semibold">
+        Contact Details of the traveller
+      </div>
+      <div class="grid grid-cols-2 gap-4 border mt-2  py-1 px-4">
+        <div>Address</div>
+        <div><%= @contact.house_name %></div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4">
+        <div>Ward</div>
+        <div><%= @contact.ward %></div>
+      </div>
+
+      <!--    create_table "panchayats", force: :cascade do |t|-->
+      <!--    t.string "name"-->
+      <!--    t.datetime "created_at", precision: 6, null: false-->
+      <!--    t.datetime "updated_at", precision: 6, null: false-->
+      <!--    t.bigint "district_id"-->
+      <!--    t.string "lb_code"-->
+      <!--    t.string "lb_type"-->
+      <!--    t.integer "lb_type_csn"-->
+      <!--    t.string "lb_name_english"-->
+      <!--    t.index ["district_id"], name: "index_panchayats_on_district_id"-->
+      <!--    end-->
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4">
+        <div>LSG</div>
+        <div><%= @contact.panchayat.lb_name_english %></div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4">
+        <div>District</div>
+        <div><%= @contact.panchayat.district.name %></div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4">
+        <div>State</div>
+        <div>Kerala</div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4">
+        <div>Country</div>
+        <div>India</div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 border   py-1 px-4">
+        <div>Phone</div>
+        <div><%= @contact.phone %></div>
+      </div>
     </div>
   </div>
-  <div class="w-1/2">
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Name of the Passenger</div>
-      <div>9</div>
-    </div>
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Flight Number</div>
-      <div>9</div>
-    </div>
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Passport Number</div>
-      <div>9</div>
-    </div>
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Nationality</div>
-      <div>Indian</div>
-    </div>
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Age</div>
-      <div>Indian</div>
-    </div>
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Date of Arrival</div>
-      <div>Indian</div>
-    </div>
-    <div class="grid grid-cols-2 gap-4 border   py-2 px-4">
-      <div>Date of Arrival</div>
-      <div>Indian</div>
-    </div>
+  <div class="mt-4 font-semibold">
+    Are you suffering from any of the covid symptoms?
+  </div>
+  <div class="mt-4">
+    <% @contact.symptoms.each do |s| %>
+      <div>
+        <%= s.name %> <span class="font-semibold pl-4">Yes</span>
+      </div>
+    <% end %>
+    <% if @contact.symptoms.blank? %>
+      No Symptoms
+    <% end %>
   </div>
 </div>

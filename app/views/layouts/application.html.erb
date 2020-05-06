@@ -23,7 +23,7 @@
   <%= javascript_pack_tag 'application' %>
 </head>
 
-<body class="bg-gray-100 leading-normal tracking-normal font-sans text-gray-900">
+<body class="<%= @bg_white.present? ? 'bg-white' : 'bg-gray-100' %> leading-normal tracking-normal font-sans text-gray-900">
 <section class="min-h-full flex flex-col items-stretch">
   <header class="shadow-md bg-white flex-shrink-0">
     <div class="px-8 lg:px-16 py-4 flex flex-row items-center lg:flex-row justify-between lg:items-center max-w-7xl mx-auto container">
