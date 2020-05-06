@@ -1,4 +1,13 @@
 <div class="px-6 py-4 mx-auto">
+  <div class="p-4 bg-blue-200 rounded border border-blue-400 text-blue-900">
+    <div class="font-semibold text-blue-800">Notice</div>
+    You will be quarantined for the 1st 7 days <br> you can choose to stay at
+    <span class="font-semibold"> short stay home </span>
+    (free accommodation from the government) or <br>
+    you can pick a paid accommodation at
+    <a href="http://stay.coronasafe.network/" target="_blank" class="font-semibold">stay.coronasafe.network</a>
+  </div>
+
   <%= simple_form_for @application, defaults: { input_html: { class: 'form-input input-text mt-1 font-sans' }, wrapper_html: { class: 'flex flex-col my-4 max-w-xl mx-auto' }, label_html: { class: 'label' } } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -6,9 +15,10 @@
     <%= f.input :flight_number, label: 'Enter Your flight number' %>
     <%= f.input :port_of_departure, label: 'Place you are coming form' %>
     <%= f.association :port, collection: Port.all(), input_html: { class: 'form-select', id: 'dropdown-choice-select' }, label: 'Port of arrival in Kerala' %>
-    <%#= f.input :arrival_on, label: 'Arrival on', class: 'flex', html5: true, input_html: { class: 'flex form-select mr-4' }, as: :datetime, required: false %>
+    <%= f.input :need_stay, label: 'Do you need free accommodation from the government?', input_html: { class: "form-radio m-2" }, collection: [['Yes', true], ['No', false]], as: :radio_buttons, required: true %>
+
     <span class="inline-flex rounded-md shadow-sm">
           <%= f.button :submit, 'Create Application', 'data-turbolinks-scroll': false, class: 'mt-4 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800 focus:outline-none focus:border-gray-700 focus:shadow-outline-indigo active:bg-gray-700 transition ease-in-out duration-150' %>
-        </span>
+    </span>
   <% end %>
 </div>

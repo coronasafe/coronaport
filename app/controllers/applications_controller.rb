@@ -55,6 +55,6 @@ class ApplicationsController < ApplicationController
   private
 
   def application_params
-    params.require(:application).permit(:port_id, :flight_number, :arrival_on, :port_of_departure)
+    params.require(:application).permit(:port_id, :flight_number, :arrival_on, :port_of_departure, :need_stay)
   end
 end
