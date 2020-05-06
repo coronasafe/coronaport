@@ -13,6 +13,48 @@
       Travellers: <%= @application.contacts.count %>
     </div>
   </div>
+  <% if @contact.status.blank? %>
+    <%= link_to 'Red Flag and Move to Isolation', set_red_flag_application_contact_path(@application, @contact), class: "btn btn-danger mt-4" %>
+  <% else %>
+    <div class="rounded-md bg-red-50 p-4 border-red-400 mt-4 shadow border">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm leading-5 font-medium text-red-800">
+            Alert
+          </h3>
+          <div class="mt-2 text-sm leading-5 text-red-700">
+            Traveller was flagged and moved to isolation
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @contact.symptoms.any? %>
+    <div class="rounded-md bg-red-50 p-4 border-red-400 mt-4 shadow border">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm leading-5 font-medium text-red-800">
+            Alert
+          </h3>
+          <div class="mt-2 text-sm leading-5 text-red-700">
+            Traveller has covid symptoms:
+            <div class="font-bold"><%= @contact.symptoms.pluck(:name).join(', ') %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
   <% if @contact.is_vulnerable %>
     <div class="rounded-md bg-yellow-50 p-4 border-yellow-400 mt-4 shadow border">
@@ -53,50 +95,51 @@
       </div>
     </div>
   <% end %>
-<!--  <div class="rounded-md bg-blue-50 p-4 border-blue-400 mt-4 shadow border">-->
-<!--    <div class="flex">-->
-<!--      <div class="flex-shrink-0">-->
-<!--        <svg class="h-5 w-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">-->
-<!--          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>-->
-<!--        </svg>-->
-<!--      </div>-->
-<!--      <div class="ml-3">-->
-<!--        <h3 class="text-sm leading-5 font-medium text-blue-800">-->
-<!--          Details of stay-->
-<!--        </h3>-->
-<!--        <div class="mt-2 text-sm leading-5 text-blue-700">-->
-          <%# if @application.houses.present? %>
-            <%# if "accepted".in? @application.houses.pluck(:status) %>
-<!--              Has an approved house-->
-            <%# else %>
-<!--              Does not have an approved house, Please move to quarantine center-->
-            <%# end %>
-          <%# else %>
-<!--            Please ask to show a booking confirmation from stay-->
-          <%# end %>
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
+
+  <!--  <div class="rounded-md bg-blue-50 p-4 border-blue-400 mt-4 shadow border">-->
+  <!--    <div class="flex">-->
+  <!--      <div class="flex-shrink-0">-->
+  <!--        <svg class="h-5 w-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">-->
+  <!--          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>-->
+  <!--        </svg>-->
+  <!--      </div>-->
+  <!--      <div class="ml-3">-->
+  <!--        <h3 class="text-sm leading-5 font-medium text-blue-800">-->
+  <!--          Details of stay-->
+  <!--        </h3>-->
+  <!--        <div class="mt-2 text-sm leading-5 text-blue-700">-->
+  <%# if @application.houses.present? %>
+  <%# if "accepted".in? @application.houses.pluck(:status) %>
+  <!--              Has an approved house-->
+  <%# else %>
+  <!--              Does not have an approved house, Please move to quarantine center-->
+  <%# end %>
+  <%# else %>
+  <!--            Please ask to show a booking confirmation from stay-->
+  <%# end %>
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
 
   <%# if @application.vehicles.blank? %>
-<!--    <div class="rounded-md bg-purple-50 p-4 border-purple-400 mt-4 shadow border">-->
-<!--      <div class="flex">-->
-<!--        <div class="flex-shrink-0">-->
-<!--          <svg class="h-5 w-5 text-purple-400" fill="currentColor" viewBox="0 0 20 20">-->
-<!--            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>-->
-<!--          </svg>-->
-<!--        </div>-->
-<!--        <div class="ml-3">-->
-<!--          <h3 class="text-sm leading-5 font-medium text-purple-800">-->
-<!--            Transportation-->
-<!--          </h3>-->
-<!--          <div class="mt-2 text-sm leading-5 text-purple-700">-->
-<!--            Please arrange Airport Taxi-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
+  <!--    <div class="rounded-md bg-purple-50 p-4 border-purple-400 mt-4 shadow border">-->
+  <!--      <div class="flex">-->
+  <!--        <div class="flex-shrink-0">-->
+  <!--          <svg class="h-5 w-5 text-purple-400" fill="currentColor" viewBox="0 0 20 20">-->
+  <!--            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>-->
+  <!--          </svg>-->
+  <!--        </div>-->
+  <!--        <div class="ml-3">-->
+  <!--          <h3 class="text-sm leading-5 font-medium text-purple-800">-->
+  <!--            Transportation-->
+  <!--          </h3>-->
+  <!--          <div class="mt-2 text-sm leading-5 text-purple-700">-->
+  <!--            Please arrange Airport Taxi-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
   <%# end %>
 
   <div class="mt-4 font-semibold text-xl">
@@ -154,7 +197,7 @@
       </div>
     </div>
   </div>
-<!--  <div>-->
+  <!--  <div>-->
   <!--    <div class="mt-4 font-semibold text-xl">-->
   <!--      House Details-->
   <!--    </div>-->

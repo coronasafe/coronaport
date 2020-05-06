@@ -3,10 +3,13 @@ class ApplicationsController < ApplicationController
   before_action :set_application, only: [:show, :edit, :update]
 
   def index
-    @applications = current_user&.applications
-
-    if current_user && current_user.panchayat_admin?
-      @houses = current_user.panchayat.houses.where(status: nil)
+    if current_user && current_user.is_admin?
+      redirect_to ports_path
+    else
+      @applications = current_user&.applications
+      if current_user && current_user.panchayat_admin?
+        @houses = current_user.panchayat.houses.where(status: nil)
+      end
     end
   end
 

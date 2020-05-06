@@ -6,11 +6,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
 
-  enum role: { traveller: "traveller", phone_caller: "phone_caller", district_admin: "district_admin", panchayat_admin: "panchayat_admin", admin: "admin" }
+  enum role: { traveller: "traveller", port_admin: "port_admin", phone_caller: "phone_caller", district_admin: "district_admin", panchayat_admin: "panchayat_admin", admin: "admin" }
   after_initialize :set_default_role, if: :new_record?
 
   def set_default_role
-    self.role ||= :phone_caller
+    self.role ||= :traveller
   end
 
   belongs_to :panchayat, optional: true
@@ -19,6 +19,6 @@ class User < ApplicationRecord
   has_many :applications
 
   def is_admin?
-    ["district_admin", "panchayat_admin", "admin"].include?(role)
+    ["district_admin", "port_admin", "panchayat_admin", "admin"].include?(role)
   end
 end

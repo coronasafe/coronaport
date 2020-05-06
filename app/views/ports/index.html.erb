@@ -1,0 +1,24 @@
+<div class="mt-4 font-semibold text-xl">
+  Ports
+</div>
+<% Port.all.each do |p| %>
+  <div class="bg-white p-4  border border-gray-200 shadow rounded-lg mx-auto my-2">
+    <div>
+      <dl class="grid grid-cols-2 col-gap-2 row-gap-4 sm:grid-cols-4">
+        <div class="sm:col-span-1">
+          <dt class="text-sm leading-5 font-medium text-gray-500">
+            Name
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <%= p.name %>
+          </dd>
+        </div>
+        <div class="sm:col-span-1">
+          <dd class="mt-1 text-sm leading-5 text-gray-900">
+            <%= link_to 'Show Details', port_path(p), class: 'btn bg-indigo-600 text-white btn-large' %>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+<% end %>

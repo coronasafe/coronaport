@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy, :summary]
-  before_action :set_application, only: [:show, :new, :edit, :update, :create, :summary]
+  before_action :set_contact, only: [:show, :edit, :update, :destroy, :summary, :set_red_flag]
+  before_action :application, only: [:show, :new, :edit, :update, :create, :summary, :set_red_flag]
 
   # GET /contacts
   # GET /contacts.json
@@ -17,6 +17,15 @@ class ContactsController < ApplicationController
   end
 
   def new
+  end
+
+  def set_red_flag
+    if current_user && current_user.is_admin?
+      @contact.update!(status: 'red')
+      redirect_to summary_application_contact_path(@application, @contact), notice: 'Flagged the traveller Successfully'
+    else
+      redirect_to root_path, notice: "You don't have admin access"
+    end
   end
 
   def edit
@@ -61,18 +70,24 @@ class ContactsController < ApplicationController
   end
 
   def summary
-
+    if current_user.is_admin?
+      if @contact.arrived_on.blank?
+        @contact.update!(arrived_on: Time.zone.now)
+      end
+    else
+      redirect_to root_path, notice: "Access Denied! Only Admins are Allowed Access"
+    end
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_contact
-    @contact = Contact.find(params[:id])
+    @contact ||= application.contacts.find(params[:id])
   end
 
-  def set_application
-    @application = Application.find(params[:application_id])
+  def application
+    @application ||= Application.find(params[:application_id])
   end
 
   def scope_access(contacts)
