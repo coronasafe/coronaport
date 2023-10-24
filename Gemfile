@@ -35,7 +35,7 @@ gem 'enum_help'
 # Qr code
 gem 'rqrcode'
 
-gem 'activeadmin'
+gem 'activeadmin', '>= 3.1.0'
 
 # Plus integrations with:
 
